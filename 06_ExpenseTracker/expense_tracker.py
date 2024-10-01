@@ -26,13 +26,22 @@ def get_user_input_expense():
             new_expense = expense(expense_name, expense_categories[expense_categorie-1], expense_amount)
         
         return new_expense
+    
+def write_to_file(expense, filename):
+    print(f"save \n{expense} \nto {filename}")
+    with open(filename, "a") as file:
+        file.write(f"{expense.name}, {expense.amount}, {expense.category}")
 
 
 def main():
+
+    file_name = "06_ExpenseTracker/data.csv"
+
     #1)ask for input
     expense = get_user_input_expense()
-    print(expense)
+
     #2)write to file
+    write_to_file(expense, file_name)
     #3)show summary
 
 if __name__ == "__main__":
